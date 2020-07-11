@@ -6,7 +6,7 @@ import android.widget.Button;
 import com.sayed.learnigretrofitlearning.R;
 
 public class ButtonLight implements Switchable {
-   private Button button ;
+   protected Button button ;
 
     public ButtonLight(Button button) {
         this.button = button;
