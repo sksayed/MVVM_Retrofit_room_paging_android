@@ -1,8 +1,10 @@
-package com.sayed.learnigretrofitlearning;
+package View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.sayed.learnigretrofitlearning.R;
 
 public class MainActivity extends AppCompatActivity {
 
