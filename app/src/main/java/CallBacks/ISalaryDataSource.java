@@ -1,5 +1,7 @@
 package CallBacks;
 
+import java.util.function.Consumer;
+
 interface ISalaryDataSource {
-    Double getSalaryFromWeb (String month);
+    void getSalaryFromWeb (String month , Consumer<Double> salary);
 }

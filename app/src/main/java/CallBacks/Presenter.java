@@ -15,7 +15,7 @@ public class Presenter {
                 //presenter will modify the value required for
                 //showing in the view
                 Double value = callback;
-                String modifier = "The Salary of "+month+" is "+Double.toString(value) + " Bdt";
+                String modifier = "The Salary of "+month+" is "+value+ " Bdt";
                 doubleConsumer.accept(modifier);
             });
         }

@@ -1,11 +1,16 @@
 package CallBacks;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.function.Consumer;
+
 public class SalaryDataSource implements ISalaryDataSource {
+    private ExecutorService executorService ;
     public SalaryDataSource() {
+        executorService = Executors.newSingleThreadExecutor();
     }
 
-    @Override
-    public Double getSalaryFromWeb(String month) {
+    private Double getSalaryFromWebAsync(String month) {
         /*
          * here i am behaving as if
          * its been taking 5 sec for geting that value
@@ -29,5 +34,12 @@ public class SalaryDataSource implements ISalaryDataSource {
         }
 
         return sal ;
+    }
+
+    @Override
+    public void getSalaryFromWeb(String month, Consumer<Double> salary) {
+        executorService.submit(()->{
+            salary.accept(getSalaryFromWebAsync(month));
+        });
     }
 }

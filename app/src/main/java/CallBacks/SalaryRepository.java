@@ -11,8 +11,9 @@ public class SalaryRepository implements ISalaryRepository {
     }
 
     public void getSalary(String month , Consumer<Double> callback) {
-        double value = dataSource.getSalaryFromWeb(month.toLowerCase());
-        callback.accept(value);
+         dataSource.getSalaryFromWeb(month.toLowerCase(), xyz ->{
+            callback.accept(xyz);
+        });
     }
 
 }
