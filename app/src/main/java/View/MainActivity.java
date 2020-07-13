@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retrofit1st);
         loadContents();
-        //getPosts();
-        getComments();
+        getPosts();
+        //getComments();
     }
 
     private void getComments() {
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void getPosts() {
         apiPlaceHolder
-                .getPosts()
+                .getPosts(1)
                 .enqueue(new Callback<List<Post>>() {
                     @Override
                     public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {

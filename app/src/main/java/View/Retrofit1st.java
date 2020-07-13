@@ -67,6 +67,6 @@ public class Retrofit1st extends AppCompatActivity {
     }
 
     Call<List<Post>> getPosts() {
-        return apiPlaceHolder.getPosts();
+        return apiPlaceHolder.getPosts(8);
     }
 }
