@@ -7,9 +7,17 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.function.Consumer;
 
-public class HttpDataSourceImpl {
+public class HttpDataSourceImpl implements HttpDataSource {
 
+    private ExecutorService executorService ;
+
+    public HttpDataSourceImpl() {
+        executorService = Executors.newFixedThreadPool(5);
+    }
 
     /*Making Http Request Involves
     * 1)Declare a URL Connection
@@ -31,7 +39,20 @@ public class HttpDataSourceImpl {
         while ((line = reader.readLine()) != null) {
             stringBuilder.append(line);
         }
-        return line ;
+        return stringBuilder.toString() ;
+    }
+    @Override
+    public void getDataAsync (Consumer<String> callBack) {
+        executorService.submit(()->{
+            String s = " " ;
+            try {
+                callBack.accept(makeHttp());
+
+            }catch (Exception e ){
+                e.printStackTrace();
+            }
+
+        });
     }
 
 }

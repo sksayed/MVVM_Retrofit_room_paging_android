@@ -6,12 +6,15 @@
     android:layout_height="match_parent"
     tools:context="View.MainActivity">
 
-    <TextView
+    <EditText
         android:id="@+id/salaryTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Hello World!"
         android:textSize="24dp"
+        android:inputType="textMultiLine"
+        android:maxHeight="250dp"
+        android:editable="false"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
