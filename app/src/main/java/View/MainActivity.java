@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import CallBacks.Presenter;
+import Model.Comment;
 import Model.Post;
 import Presenter.HttpPresenter;
 import Repository.JsonApiPlaceHolder;
@@ -33,7 +34,37 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retrofit1st);
         loadContents();
-        getPosts();
+        //getPosts();
+        getComments();
+    }
+
+    private void getComments() {
+        apiPlaceHolder.getCommentsFromUser(5)
+                .enqueue(new Callback<List<Comment>>() {
+                    @Override
+                    public void onResponse(Call<List<Comment>> call, Response<List<Comment>> response) {
+                        if (!response.isSuccessful()) {
+                            mTextView.setText(response + " code is " + response.code());
+                            return;
+                        }
+
+                        for (Comment comment : response.body()) {
+                            String content = "";
+                            content += "PostId: " + comment.getPostId() + "\n";
+                            content += "ID: " + comment.getId() + "\n";
+                            content += "Email: " + comment.getEmail() + "\n";
+                            content += "Name: " + comment.getName() + "\n";
+                            content += "Text: " + comment.getText() + "\n\n";
+
+                            mTextView.append(content);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<Comment>> call, Throwable t) {
+                        mTextView.append(t.getMessage());
+                    }
+                });
     }
 
     private void loadContents() {
