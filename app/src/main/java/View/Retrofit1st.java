@@ -1,16 +1,15 @@
 package View;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
-import CallBacks.Presenter;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.sayed.learnigretrofitlearning.R;
+
+import java.util.List;
+
 import Model.Post;
-import Presenter.HttpPresenter;
 import Repository.JsonApiPlaceHolder;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -18,11 +17,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import com.sayed.learnigretrofitlearning.R;
-
-import java.util.List;
-
-public class MainActivity extends AppCompatActivity {
+public class Retrofit1st extends AppCompatActivity {
 
     private TextView mTextView;
     private Retrofit retrofit;
