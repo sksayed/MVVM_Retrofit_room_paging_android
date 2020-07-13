@@ -28,7 +28,7 @@ public class Retrofit1st extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retrofit1st);
         mTextView = (TextView) findViewById(R.id.text);
-        setUpRetrofit();
+       // setUpRetrofit();
     }
 
     private void setUpRetrofit() {
@@ -38,7 +38,7 @@ public class Retrofit1st extends AppCompatActivity {
                 .build();
         apiPlaceHolder = retrofit.create(JsonApiPlaceHolder.class);
 
-        getPosts().enqueue(new Callback<List<Post>>() {
+       /* getPosts().enqueue(new Callback<List<Post>>() {
             @Override
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
                 if (!response.isSuccessful()) {
@@ -63,10 +63,10 @@ public class Retrofit1st extends AppCompatActivity {
                 mTextView.append(t.getMessage());
             }
         });
-
+    */
     }
 
-    Call<List<Post>> getPosts() {
-        return apiPlaceHolder.getPosts(8);
-    }
+    /*Call<List<Post>> getPosts() {
+      *//*  return apiPlaceHolder.getPosts(8);*//*
+    }*/
 }

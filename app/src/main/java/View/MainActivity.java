@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void getPosts() {
         apiPlaceHolder
-                .getPosts(1)
+                .getPosts(1 , "id","desc")
                 .enqueue(new Callback<List<Post>>() {
                     @Override
                     public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {

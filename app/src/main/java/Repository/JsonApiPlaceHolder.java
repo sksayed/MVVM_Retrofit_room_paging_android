@@ -11,7 +11,10 @@ import retrofit2.http.Query;
 
 public interface JsonApiPlaceHolder {
     @GET("posts")
-    Call<List<Post>> getPosts (@Query("userId") int userId);
+    Call<List<Post>> getPosts (@Query("userId") int userId,
+                               @Query("_sort") String sortBy,
+                               @Query("_order") String order
+                               );
     /*
     here retro fit will map the id
     passed in to the id of the
