@@ -1,11 +1,9 @@
 package Model;
-
 /*
 * to make this an entity
 * we have to declare it as an Entity
 * annotation
 * */
-
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -21,9 +19,9 @@ public class Note {
     private String title ;
     private String text ;
     @ColumnInfo(name = "priority_col")
-    private double priority;
+    private int priority;
 
-    public Note(String title, String text, double priority) {
+    public Note(String title, String text, int priority) {
         this.title = title;
         this.text = text;
         this.priority = priority;
@@ -45,7 +43,7 @@ public class Note {
         return text;
     }
 
-    public double getPriority() {
+    public int getPriority() {
         return priority;
     }
 }
