@@ -13,6 +13,8 @@ import Model.Comment;
 import Model.Post;
 import Presenter.HttpPresenter;
 import Repository.JsonApiPlaceHolder;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -25,6 +27,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private HttpLoggingInterceptor httpLoggingInterceptor ;
+    private OkHttpClient okHttpClient;
     private TextView mTextView;
     private Retrofit retrofit;
     private JsonApiPlaceHolder apiPlaceHolder;
@@ -69,9 +73,17 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadContents() {
         mTextView = (TextView) findViewById(R.id.text);
+        httpLoggingInterceptor = new HttpLoggingInterceptor();
+        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        okHttpClient = new OkHttpClient.Builder()
+                .addInterceptor(httpLoggingInterceptor)
+                .build();
+
         retrofit = new Retrofit.Builder()
                 .baseUrl("https://jsonplaceholder.typicode.com/")
                 .addConverterFactory(GsonConverterFactory.create())
+                .client(okHttpClient)
                 .build();
         apiPlaceHolder = retrofit.create(JsonApiPlaceHolder.class);
     }
