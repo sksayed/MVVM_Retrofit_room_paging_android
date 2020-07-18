@@ -57,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
                 //update the recycler view
                 Toast.makeText(MainActivity.this , "OnChanged" , Toast.LENGTH_SHORT).show();
                 mNoteList  = notes ;
-                noteAdapter.setNoteList(notes);
-                noteAdapter.notifyDataSetChanged();
+                noteAdapter.submitList(notes);
+
             }
         });
 
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         mItemTouchHelper.attachToRecyclerView(recyclerView);
         //Adapter
        List<Note> notes = new ArrayList<>();
-       noteAdapter = new NoteAdapter(notes);
+       noteAdapter = new NoteAdapter();
        recyclerView.setAdapter(noteAdapter);
 
        //update note

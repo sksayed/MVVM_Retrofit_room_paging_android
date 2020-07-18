@@ -7,6 +7,8 @@ import android.widget.QuickContactBadge;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sayed.learnigretrofitlearning.R;
@@ -16,13 +18,29 @@ import java.util.List;
 
 import Model.Note;
 
-public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NotesViewHolder> {
-    private List<Note> noteList;
-    private OnItemClickListener mOnItemClickListener ;
+public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NotesViewHolder> {
 
-    public NoteAdapter(List<Note> noteList) {
-        this.noteList = noteList;
+    private OnItemClickListener mOnItemClickListener;
+
+    public NoteAdapter() {
+        super(DIFF_CALLBACK);
+
     }
+
+    private static final DiffUtil.ItemCallback<Note> DIFF_CALLBACK = new DiffUtil.ItemCallback<Note>() {
+        @Override
+        public boolean areItemsTheSame(@NonNull Note oldItem, @NonNull Note newItem) {
+            return oldItem.getId() == newItem.getId();
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull Note oldItem, @NonNull Note newItem) {
+            return oldItem.getTitle().equals(newItem.getTitle()) &&
+                    oldItem.getText().equals(newItem.getText()) &&
+                    oldItem.getPriority() == newItem.getPriority();
+
+        }
+    };
 
     @NonNull
     @Override
@@ -33,7 +51,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NotesViewHolde
 
     @Override
     public void onBindViewHolder(@NonNull NotesViewHolder holder, int position) {
-        Note note = noteList.get(position);
+        Note note = getItem(position);
         holder.title.setText(note.getTitle());
         holder.description.setText(note.getText());
         holder.priority.setText(String.valueOf(note.getPriority()));
@@ -42,7 +60,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NotesViewHolde
 
     @Override
     public int getItemCount() {
-        return noteList.size();
+        return getItemCount();
     }
 
     public class NotesViewHolder extends RecyclerView.ViewHolder {
@@ -71,12 +89,10 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NotesViewHolde
         }
     }
 
-    public void setNoteList(List<Note> noteList) {
-        this.noteList = noteList;
-    }
 
-    public Note getNoteAt ( int position ) {
-        return this.noteList.get(position);
+
+    public Note getNoteAt(int position) {
+        return getItem(position);
     }
 
     //Test for Call Back
@@ -85,7 +101,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NotesViewHolde
         void onItemClick(Note note);
     }
 
-    public void setOnItemClickListener ( OnItemClickListener onItemClickListener) {
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.mOnItemClickListener = onItemClickListener;
     }
 }
