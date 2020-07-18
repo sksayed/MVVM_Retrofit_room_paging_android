@@ -60,7 +60,7 @@ public class NoteAdapter extends ListAdapter<Note, NoteAdapter.NotesViewHolder> 
 
     @Override
     public int getItemCount() {
-        return getItemCount();
+        return getCurrentList().size();
     }
 
     public class NotesViewHolder extends RecyclerView.ViewHolder {
