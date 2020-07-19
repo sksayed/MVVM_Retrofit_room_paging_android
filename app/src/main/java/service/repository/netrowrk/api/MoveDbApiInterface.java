@@ -10,7 +10,7 @@ import utilities.Constants;
 import utilities.Constants.*;
 
 
-interface MoveDbApiInterface {
+public interface MoveDbApiInterface {
     @GET()
     Call<ArrayList<Movie>> getAllPopularMovies (@Query(Constants.API_KEY_REQUEST_PARAM) String apiKey,
                                                 @Query(Constants.LANGUAGE_REQUEST_PARAM) String language ,

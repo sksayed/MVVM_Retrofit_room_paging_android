@@ -9,6 +9,8 @@ public class Constants {
 
     public static final String BASE_URL_JOSN_PLACEHOLDER_API ="https://jsonplaceholder.typicode.com/";
     public static final String POPULAR_MOVIES_BASE_URL = "https://api.themoviedb.org/3/movie/popular/";
+    public static final int LOADING_PAGE_SIZE = 10;
+    public static final int NUMBER_OF_THREADS = 3;
     private static final String IMAGE_URL_PREFIX = "https://image.tmdb.org/t/p/";
     public static final String SMALL_IMAGE_URL_PREFIX = IMAGE_URL_PREFIX + "w300";
     public static final String BIG_IMAGE_URL_PREFIX = IMAGE_URL_PREFIX + "w500";

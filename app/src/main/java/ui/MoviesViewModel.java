@@ -1,0 +1,29 @@
+package ui;
+
+import android.app.Application;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.paging.PagedList;
+
+import Model.Movie;
+import Model.NetworkState;
+import service.MovieRepository;
+
+class MoviesViewModel extends AndroidViewModel {
+    private MovieRepository movieRepository ;
+    public MoviesViewModel(@NonNull Application application) {
+        super(application);
+        movieRepository =  new MovieRepository(application);
+    }
+
+    public LiveData<PagedList<Movie>> getPagedListLiveData ( ) {
+       return movieRepository.getMediatorLiveData();
+    }
+
+    public LiveData<NetworkState> getNetworkStateLiveData () {
+        return movieRepository.getNetworkStateLiveData();
+    }
+
+}
