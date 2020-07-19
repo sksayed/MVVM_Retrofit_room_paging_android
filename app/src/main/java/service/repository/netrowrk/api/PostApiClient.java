@@ -3,7 +3,7 @@ package service.repository.netrowrk.api;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import Utilities.Constants;
+import utilities.Constants;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -21,7 +21,7 @@ public class PostApiClient {
         Gson gson = new GsonBuilder()
                 .create();
         Retrofit.Builder builder = new Retrofit.Builder()
-                .baseUrl(Constants.BASE_URL)
+                .baseUrl(Constants.BASE_URL_JOSN_PLACEHOLDER_API)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create(gson));
         return builder.build().create(PostAPIInterface.class);
