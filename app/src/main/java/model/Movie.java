@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 /*
  * this class will be model for database

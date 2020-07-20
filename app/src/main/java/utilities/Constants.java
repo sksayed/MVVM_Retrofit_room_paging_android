@@ -3,7 +3,7 @@ package utilities;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-import Model.Movie;
+import model.Movie;
 
 public class Constants {
 

@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 /*
 * this class is sort of a flag class

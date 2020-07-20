@@ -12,7 +12,7 @@ import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-import Model.Movie;
+import model.Movie;
 import utilities.Constants;
 
 class MovieJsonDeserializer implements JsonDeserializer<ArrayList<Movie>> {
@@ -20,13 +20,13 @@ class MovieJsonDeserializer implements JsonDeserializer<ArrayList<Movie>> {
 
     @Override
     public ArrayList<Movie> deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-        ArrayList<Movie> movieArrayList = null;
+        ArrayList<Movie> movieArrayList = new ArrayList<>();
         try {
             JsonObject jsonObject = json.getAsJsonObject();
             JsonArray moviesJsonArray = jsonObject.getAsJsonArray(Constants.MOVIES_ARRAY_DATA_TAG);
             movieArrayList = new ArrayList<>(moviesJsonArray.size());
             for (int i = 0; i < moviesJsonArray.size(); i++) {
-                movieArrayList.add(context.deserialize(moviesJsonArray.get(i), typeOfT));
+                movieArrayList.add(context.deserialize(moviesJsonArray.get(i), Movie.class));
             }
 
         } catch (JsonParseException e) {

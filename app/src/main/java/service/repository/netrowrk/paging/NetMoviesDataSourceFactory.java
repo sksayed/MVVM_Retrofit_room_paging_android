@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 import androidx.paging.DataSource;
 
-import Model.Movie;
+import model.Movie;
 import rx.subjects.ReplaySubject;
 
 public class NetMoviesDataSourceFactory extends DataSource.Factory {

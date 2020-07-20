@@ -3,7 +3,7 @@ package service.repository.netrowrk.api;
 
 import java.util.List;
 
-import Model.Post;
+import model.Post;
 import retrofit2.Call;
 import retrofit2.http.GET;
 

@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.sayed.learnigretrofitlearning.R;
 
-import ui.Fragment.MovieListFragment;
+import ui.fragment.MovieListFragment;
 
 public class MovieActivity extends AppCompatActivity {
 
@@ -20,7 +20,7 @@ public class MovieActivity extends AppCompatActivity {
             MovieListFragment movieListFragment = new MovieListFragment();
             getSupportFragmentManager()
                     .beginTransaction()
-                    .add(movieListFragment , null)
+                    .add(R.id.FrameContainer , movieListFragment)
                     .commit();
         }
     }

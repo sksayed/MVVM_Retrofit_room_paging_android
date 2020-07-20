@@ -7,15 +7,15 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.paging.PagedList;
 
-import Model.Movie;
-import Model.NetworkState;
+import model.Movie;
+import model.NetworkState;
 import service.MovieRepository;
 
-class MoviesViewModel extends AndroidViewModel {
+public class MoviesViewModel extends AndroidViewModel {
     private MovieRepository movieRepository ;
     public MoviesViewModel(@NonNull Application application) {
         super(application);
-        movieRepository =  new MovieRepository(application);
+        movieRepository =  MovieRepository.getInstance(application);
     }
 
     public LiveData<PagedList<Movie>> getPagedListLiveData ( ) {

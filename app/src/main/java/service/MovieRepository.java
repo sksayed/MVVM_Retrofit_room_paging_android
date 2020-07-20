@@ -1,6 +1,5 @@
 package service;
 
-import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
@@ -9,7 +8,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
 import androidx.paging.PagedList;
 
-import Model.NetworkState;
+import model.NetworkState;
 import service.repository.netrowrk.MoviesNetwork;
 import service.repository.netrowrk.paging.NetMoviesDataSourceFactory;
 
@@ -41,7 +40,7 @@ public class MovieRepository {
 
     public static MovieRepository getInstance(Context context) {
         if (instance == null) {
-            instance = new MovieRepository(new Application());
+            instance = new MovieRepository(context);
         }
         return instance;
     }
@@ -51,6 +50,10 @@ public class MovieRepository {
         @Override
         public void onZeroItemsLoaded() {
             super.onZeroItemsLoaded();
+           /* mediatorLiveData.addSource(moviesNetwork.getMoviesPaged(), value -> {
+                mediatorLiveData.setValue(value);
+                Log.d(TAG, value.toString());
+            });*/
         }
 
         @Override
@@ -64,7 +67,7 @@ public class MovieRepository {
         }
     };
 
-    public MediatorLiveData getMediatorLiveData() {
+    public LiveData getMediatorLiveData() {
         return mediatorLiveData;
     }
 

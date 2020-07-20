@@ -9,9 +9,8 @@ import androidx.paging.PageKeyedDataSource;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import Model.Movie;
-import Model.NetworkState;
-import Model.Post;
+import model.Movie;
+import model.NetworkState;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

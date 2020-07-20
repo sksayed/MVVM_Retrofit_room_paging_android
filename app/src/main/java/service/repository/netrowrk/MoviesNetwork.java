@@ -8,8 +8,8 @@ import androidx.paging.PagedList;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-import Model.Movie;
-import Model.NetworkState;
+import model.Movie;
+import model.NetworkState;
 import service.repository.netrowrk.paging.NetMoviePageKeydDataSource;
 import service.repository.netrowrk.paging.NetMoviesDataSourceFactory;
 import utilities.Constants;
@@ -28,7 +28,7 @@ public class MoviesNetwork {
                 NetMoviePageKeydDataSource::getNetworkState);
         PagedList.Config pagelistConfig = new PagedList.Config.Builder()
                 .setEnablePlaceholders(false)
-                .setMaxSize(Constants.LOADING_PAGE_SIZE)
+                .setMaxSize(40)
                 .setPageSize(Constants.LOADING_PAGE_SIZE)
                 .build();
         LivePagedListBuilder livePagedListBuilder = new LivePagedListBuilder(dataSourceFactory , pagelistConfig);
