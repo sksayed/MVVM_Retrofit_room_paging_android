@@ -22,7 +22,6 @@ public class MovieRepository {
      * it will hold both the data sources such as WebApi , Database Datasource
      * it will return MediatorLiveData as it will observe only the on change
      * */
-
     public static final String TAG = MovieRepository.class.getSimpleName();
     private final MoviesNetwork moviesNetwork;
     private final MediatorLiveData mediatorLiveData;

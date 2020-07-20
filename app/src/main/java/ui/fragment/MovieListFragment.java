@@ -46,6 +46,10 @@ public class MovieListFragment extends Fragment {
                         movieAdapter.submitList(movies);
                     }
                 });
+
+        moviesViewModel.getNetworkStateLiveData().observe(getViewLifecycleOwner() , networkState -> {
+            movieAdapter.setNetworkState(networkState);
+        });
     }
 
     @Nullable

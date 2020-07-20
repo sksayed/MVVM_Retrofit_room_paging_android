@@ -24,7 +24,7 @@ public class MoviesNetwork {
     private final LiveData<NetworkState> networkStateLiveData ;
 
     public MoviesNetwork(NetMoviesDataSourceFactory dataSourceFactory , PagedList.BoundaryCallback boundaryCallback) {
-        networkStateLiveData = Transformations.switchMap(dataSourceFactory.getNetworkState() ,
+        networkStateLiveData = Transformations.switchMap(dataSourceFactory.getNetMoviesKedataSrcMutableLiveData() ,
                 NetMoviePageKeydDataSource::getNetworkState);
         PagedList.Config pagelistConfig = new PagedList.Config.Builder()
                 .setEnablePlaceholders(false)

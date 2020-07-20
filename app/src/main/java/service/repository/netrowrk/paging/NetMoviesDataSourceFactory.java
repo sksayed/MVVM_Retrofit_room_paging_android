@@ -9,16 +9,16 @@ import rx.subjects.ReplaySubject;
 
 public class NetMoviesDataSourceFactory extends DataSource.Factory {
     public static final String TAG = NetMoviesDataSourceFactory.class.getSimpleName();
-    private final MutableLiveData<NetMoviePageKeydDataSource> networkState ;
+    private final MutableLiveData<NetMoviePageKeydDataSource> netMoviesKedataSrcMutableLiveData;
     private final NetMoviePageKeydDataSource moviePageKeydDataSource ;
 
     public NetMoviesDataSourceFactory() {
-        networkState = new MutableLiveData<>();
+        netMoviesKedataSrcMutableLiveData = new MutableLiveData<>();
         moviePageKeydDataSource = new NetMoviePageKeydDataSource();
     }
 
-    public MutableLiveData<NetMoviePageKeydDataSource> getNetworkState() {
-        return networkState;
+    public MutableLiveData<NetMoviePageKeydDataSource> getNetMoviesKedataSrcMutableLiveData() {
+        return netMoviesKedataSrcMutableLiveData;
     }
 
     public NetMoviePageKeydDataSource getMoviePageKeydDataSource() {
@@ -28,7 +28,7 @@ public class NetMoviesDataSourceFactory extends DataSource.Factory {
     @NonNull
     @Override
     public DataSource create() {
-        networkState.postValue(moviePageKeydDataSource);
+        netMoviesKedataSrcMutableLiveData.postValue(moviePageKeydDataSource);
         return moviePageKeydDataSource ;
     }
 
