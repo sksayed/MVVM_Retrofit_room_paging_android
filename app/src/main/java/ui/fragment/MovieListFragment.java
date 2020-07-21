@@ -20,8 +20,9 @@ import com.sayed.learnigretrofitlearning.R;
 import model.Movie;
 import ui.MovieAdapter;
 import ui.MoviesViewModel;
+import ui.callback.OnMovieItemClickListener;
 
-public class MovieListFragment extends Fragment {
+public class MovieListFragment extends Fragment  {
     private RecyclerView movie_list_recyclerView ;
     private MoviesViewModel moviesViewModel ;
     private MovieAdapter movieAdapter ;
@@ -65,4 +66,6 @@ public class MovieListFragment extends Fragment {
         this.movie_list_recyclerView = view.findViewById(R.id.movie_list_recyclerView);
 
     }
+
+
 }

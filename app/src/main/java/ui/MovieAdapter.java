@@ -28,8 +28,8 @@ public class MovieAdapter extends PagedListAdapter<Movie, RecyclerView.ViewHolde
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         if (viewType == R.layout.movie_item) {
             View view = layoutInflater.inflate(R.layout.movie_item, parent, false);
-            MovieViewHolder viewHolder = new MovieViewHolder(view);
-            ;
+            MovieViewHolder viewHolder = new MovieViewHolder(view , );
+
             return viewHolder;
         } else if (viewType == R.layout.network_state_item) {
             View view = layoutInflater.inflate(R.layout.network_state_item, parent, false);
