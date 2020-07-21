@@ -26,10 +26,10 @@ public class MovieViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bindTo (Movie movie) {
-        this.title.setText(movie.getmTitle());
-        this.userrating.setText(String.format("%1$,.2f" ,movie.getmVoteAverage()));
-        if (movie.getmPosterPath() != null){
-            String posterPath = Constants.SMALL_IMAGE_URL_PREFIX+movie.getmPosterPath();
+        this.title.setText(movie.getTitle());
+        this.userrating.setText(String.format("%1$,.2f" ,movie.getVoteAverage()));
+        if (movie.getPosterPath() != null){
+            String posterPath = Constants.SMALL_IMAGE_URL_PREFIX+movie.getPosterPath();
             Picasso.get().load(posterPath).into(thumbnail);
         }
 

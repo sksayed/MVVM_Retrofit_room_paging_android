@@ -9,8 +9,14 @@ import androidx.lifecycle.MediatorLiveData;
 import androidx.paging.PagedList;
 
 import model.NetworkState;
+import rx.Scheduler;
+import rx.schedulers.Schedulers;
 import service.repository.netrowrk.MoviesNetwork;
 import service.repository.netrowrk.paging.NetMoviesDataSourceFactory;
+import service.repository.storage.DbValueProvider;
+import service.repository.storage.database.MovieDao;
+import service.repository.storage.database.MovieDatabase;
+import service.repository.storage.paging.DbDataSourceFactory;
 
 /*
  * here i will  implement the
@@ -24,17 +30,38 @@ public class MovieRepository {
      * */
     public static final String TAG = MovieRepository.class.getSimpleName();
     private final MoviesNetwork moviesNetwork;
+    private final DbValueProvider dbValueProvider;
     private final MediatorLiveData mediatorLiveData;
+
     private static MovieRepository instance;
 
     public MovieRepository(Context context) {
         //TODO: change the getters of MovieNetwork
-        moviesNetwork = new MoviesNetwork(new NetMoviesDataSourceFactory(), boundaryCallback);
+        dbValueProvider = new DbValueProvider(
+                new DbDataSourceFactory(MovieDatabase.getInstance(context).movieDao())
+                , boundaryCallback);
+        moviesNetwork = new MoviesNetwork(new NetMoviesDataSourceFactory(),
+                boundaryCallback);
         mediatorLiveData = new MediatorLiveData();
         mediatorLiveData.addSource(moviesNetwork.getMoviesPaged(), value -> {
             mediatorLiveData.setValue(value);
             Log.d(TAG, value.toString());
         });
+
+     /*   mediatorLiveData.addSource(dbValueProvider.getMoviePageListLiveData() , value ->{
+            mediatorLiveData.setValue(value);
+        });*/
+
+        //Save the data into the database
+        //which comes from web api
+        NetMoviesDataSourceFactory netMoviesDataSourceFactory = new NetMoviesDataSourceFactory();
+        MovieDao dao = MovieDatabase.getInstance(context).movieDao();
+        netMoviesDataSourceFactory.getMovies()
+                .observeOn(Schedulers.io())
+                .subscribe( movie -> {
+                    dao.insertMovie(movie);
+                });
+
     }
 
     public static MovieRepository getInstance(Context context) {
@@ -49,20 +76,10 @@ public class MovieRepository {
         @Override
         public void onZeroItemsLoaded() {
             super.onZeroItemsLoaded();
-           /* mediatorLiveData.addSource(moviesNetwork.getMoviesPaged(), value -> {
+            mediatorLiveData.addSource(dbValueProvider.getMoviePageListLiveData(), value -> {
                 mediatorLiveData.setValue(value);
                 Log.d(TAG, value.toString());
-            });*/
-        }
-
-        @Override
-        public void onItemAtFrontLoaded(@NonNull Object itemAtFront) {
-            super.onItemAtFrontLoaded(itemAtFront);
-        }
-
-        @Override
-        public void onItemAtEndLoaded(@NonNull Object itemAtEnd) {
-            super.onItemAtEndLoaded(itemAtEnd);
+            });
         }
     };
 

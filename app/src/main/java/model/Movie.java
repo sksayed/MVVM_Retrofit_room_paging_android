@@ -16,7 +16,7 @@ import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
 
-@Entity(tableName = "movie")
+@Entity(tableName = "movies")
 public class Movie extends BaseObservable {
     /*
      * Annotations Start with Capital letter
@@ -86,84 +86,85 @@ public class Movie extends BaseObservable {
     public void setVote_count(Integer vote_count) {
         this.vote_count = vote_count;
     }
+
     @Bindable
-    public Boolean getmVideo() {
+    public Boolean getVideo() {
         return mVideo;
     }
 
-    public void setmVideo(Boolean mVideo) {
+    public void setVideo(Boolean mVideo) {
         this.mVideo = mVideo;
     }
     @Bindable
-    public Float getmVoteAverage() {
+    public Float getVoteAverage() {
         return mVoteAverage;
     }
 
-    public void setmVoteAverage(Float mVoteAverage) {
+    public void setVoteAverage(Float mVoteAverage) {
         this.mVoteAverage = mVoteAverage;
     }
     @Bindable
-    public String getmTitle() {
+    public String getTitle() {
         return mTitle;
     }
 
-    public void setmTitle(String mTitle) {
+    public void setTitle(String mTitle) {
         this.mTitle = mTitle;
     }
     @Bindable
-    public String getmPosterPath() {
+    public String getPosterPath() {
         return mPosterPath;
     }
 
-    public void setmPosterPath(String mPosterPath) {
+    public void setPosterPath(String mPosterPath) {
         this.mPosterPath = mPosterPath;
     }
     @Bindable
-    public String getmOriginalLanguage() {
+    public String getOriginalLanguage() {
         return mOriginalLanguage;
     }
 
-    public void setmOriginalLanguage(String mOriginalLanguage) {
+    public void setOriginalLanguage(String mOriginalLanguage) {
         this.mOriginalLanguage = mOriginalLanguage;
     }
     @Bindable
-    public String getmOriginalTitle() {
+    public String getOriginalTitle() {
         return mOriginalTitle;
     }
 
-    public void setmOriginalTitle(String mOriginalTitle) {
+    public void setOriginalTitle(String mOriginalTitle) {
         this.mOriginalTitle = mOriginalTitle;
     }
     @Bindable
-    public String getmBackdropPath() {
+    public String getBackdropPath() {
         return mBackdropPath;
     }
 
-    public void setmBackdropPath(String mBackdropPath) {
+    public void setBackdropPath(String mBackdropPath) {
         this.mBackdropPath = mBackdropPath;
     }
     @Bindable
-    public Boolean getmAdult() {
+    public Boolean getAdult() {
         return mAdult;
     }
 
-    public void setmAdult(Boolean mAdult) {
+    public void setAdult(Boolean mAdult) {
         this.mAdult = mAdult;
     }
     @Bindable
-    public String getmOverview() {
+    public String getOverview() {
         return mOverview;
     }
 
-    public void setmOverview(String mOverview) {
+    public void setOverview(String mOverview) {
         this.mOverview = mOverview;
     }
     @Bindable
-    public String getmReleaseDate() {
+    public String getReleaseDate() {
         return mReleaseDate;
     }
 
-    public void setmReleaseDate(String mReleaseDate) {
+    public void setReleaseDate(String mReleaseDate) {
         this.mReleaseDate = mReleaseDate;
     }
 
