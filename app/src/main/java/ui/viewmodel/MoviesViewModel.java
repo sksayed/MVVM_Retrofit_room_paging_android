@@ -1,4 +1,4 @@
-package ui;
+package ui.viewmodel;
 
 import android.app.Application;
 

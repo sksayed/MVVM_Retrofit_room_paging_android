@@ -12,14 +12,17 @@ import com.sayed.learnigretrofitlearning.R;
 
 import model.Movie;
 import model.NetworkState;
+import ui.callback.OnMovieItemClickListener;
 import ui.viewholder.MovieViewHolder;
 import ui.viewholder.NetworkStateViewHolder;
 
 public class MovieAdapter extends PagedListAdapter<Movie, RecyclerView.ViewHolder> {
     private NetworkState networkState;
+    private final OnMovieItemClickListener onMovieItemClickListener ;
 
-    public MovieAdapter() {
+    public MovieAdapter(OnMovieItemClickListener onMovieItemClickListener) {
         super(Movie.movieItemCallback);
+       this.onMovieItemClickListener = onMovieItemClickListener ;
     }
 
     @NonNull
@@ -28,7 +31,7 @@ public class MovieAdapter extends PagedListAdapter<Movie, RecyclerView.ViewHolde
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         if (viewType == R.layout.movie_item) {
             View view = layoutInflater.inflate(R.layout.movie_item, parent, false);
-            MovieViewHolder viewHolder = new MovieViewHolder(view , );
+            MovieViewHolder viewHolder = new MovieViewHolder(view , onMovieItemClickListener);
 
             return viewHolder;
         } else if (viewType == R.layout.network_state_item) {
